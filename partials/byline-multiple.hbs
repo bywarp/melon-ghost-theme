@@ -1,0 +1,62 @@
+<section class="post-full-authors">
+
+    <div class="row text-center py-4">
+        <div class="col">
+            <h3>This post was a collaboration between</h3>
+            <p>{{authors}}</p>
+        </div>
+    </div>
+
+    <div class="card-deck author-card">
+    {{#foreach authors}}
+        <div class="card">
+            <div class="card-body">
+                {{#if profile_image}}
+                    <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                {{else}}
+                <span class="author-profile-image avatar-wrapper bg-dark text-light"><i class="fas fa-2x fa-user"></i></span>
+                {{/if}}
+                <h2>{{name}}</h2>
+                 {{#if bio}}
+                    <p>{{bio}}</p>
+                {{/if}}   
+            </div>
+            <div class="card-footer">
+                <p>Read <a href="{{url}}">more posts</a> by this author.</p>            
+            </div>
+        </div>
+    {{/foreach}}
+
+    </ul>
+
+</section>
+
+{{#contentFor "scripts"}}
+<script>
+// Adds delay to author card dropups to disappear. This gives enough
+// time for the user to interact with the author card while they move
+// the mouse from the avatar to the card. Also makes space for the
+// interacted avatar.
+$(document).ready(function () {
+
+    var hoverTimeout;
+
+    $('.author-list-item').hover(function(){
+        var $this = $(this);
+
+        clearTimeout(hoverTimeout);
+
+        $('.author-card').removeClass('hovered');
+        $(this).children('.author-card').addClass('hovered');
+
+    }, function() {
+        var $this = $(this);
+
+        hoverTimeout = setTimeout(function() {
+            $this.children('.author-card').removeClass('hovered');
+        }, 800);
+    });
+
+});
+</script>
+{{/contentFor}}

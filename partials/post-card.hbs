@@ -1,0 +1,53 @@
+<div class="card my-5 {{post_class}} {{#unless feature_image}}no-image{{else}}{{#is "home"}}{{#has index="nth:6"}}post-card-large{{/has}}{{/is}}{{/unless}} shadow border-0">
+    {{#if feature_image}}
+        <a href="{{url}}">
+            <img class="card-img-top"
+                src="{{img_url feature_image size="m"}}"
+                alt="{{title}}"
+            />
+        </a>
+    {{/if}}
+    <div class="card-body {{#if feature_image}}py-4{{else}}py-5{{/if}}">
+        {{#if primary_tag}}
+            {{#primary_tag}}
+            <span class="badge badge-pill badge-default text-uppercase mb-3 primary-tag-margin" style="background-color: {{accent_color}} !important;"><a href="{{url}}">{{name}}</a></span>
+            {{/primary_tag}}
+        {{/if}}
+        <h6 class="post-card-title">
+            <a class="text-success shine" href="{{url}}">
+                {{title}}
+            </a>
+        </h6>
+        {{#if feature_image}}
+            <p class="description mt-3 mb-2">{{excerpt words="30"}}</p>
+        {{else}}
+            <p class="description mt-3 mb-2">{{excerpt words="44"}}</p>
+        {{/if}}
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col">
+                <ul class="author-list">
+                    {{#foreach authors}}
+                    <li class="author-list-item">
+                        <div class="author-name-tooltip">
+                            {{name}}
+                        </div>
+                        {{#if profile_image}}
+                        <a href="{{url}}" class="static-avatar">
+                            <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+                        </a>
+                        {{else}}
+                        <a href="{{url}}" class="static-avatar author-profile-image bg-dark">{{> "icons/avatar"}}</a>
+                        {{/if}}
+                    </li>
+                    {{/foreach}}
+                    <div class="post-card-byline-content">
+                        <span>{{#has author="count:>2"}}Multiple authors{{else}}{{authors}}{{/has}}</span>
+                        <span class="post-card-byline-date"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span>
+                    </div>
+                </ul>
+            </div>
+        </div>                
+    </div>
+</div>

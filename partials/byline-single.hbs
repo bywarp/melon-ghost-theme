@@ -1,0 +1,28 @@
+{{!-- Everything inside the #author tags pulls data from the author --}}
+{{#primary_author}}
+
+<div class="row author-card">
+    <div class="col">
+        <div class="media">
+            {{#if profile_image}}
+                <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+            {{else}}
+                <span class="author-profile-image avatar-wrapper bg-dark text-light"><i class="fas fa-2x fa-user"></i></span>
+            {{/if}}
+             <div class="media-body">
+                <h5 class="mt-0"><a href="{{url}}">{{name}}</a></h5>
+                {{#if bio}}
+                    <p>{{bio}}</p>
+                {{else}}
+                    <p>Read <a href="{{url}}">more posts</a> by this author.</p>
+                {{/if}}
+            </div>     
+        </div>
+    </div>
+    <div class="col text-right">
+        <a class="btn btn-primary" href="{{url}}">Read More</a>
+    </div>   
+</div>
+
+
+{{/primary_author}}

@@ -1,0 +1,58 @@
+{{!--
+This error template is used for all 400/500 errors, except 404, which might occur on your site.
+It's a good idea to keep this template as minimal as possible in terms of both file size and complexity.
+You'll notice that we *don't* use any JavsScript, or ghost_head / ghost_foot in this file.
+--}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{meta_title}}</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{!-- Vendor Scripts by Gulp --}}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/build.css"}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+</head>
+<body class="error-template">
+    <nav class="navbar navbar-dark bg-dark p-3">
+        {{#if @site.logo}}
+            <a class="navbar-brand" href="{{@site.url}}"><img src="{{img_url @site.logo size="xs"}}" alt="{{@site.title}}" /></a>
+        {{else}}
+            <a class="navbar-brand" href="{{@site.url}}">{{@site.title}}</a>
+        {{/if}}
+    </nav>
+
+    <main id="site-main" class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+
+            <h1 class="display-4">{{statusCode}}</h1>
+            <p class="lead">{{message}}</p>
+            <a href="{{@site.url}}">Go to the front page →</a>
+            
+            {{#if errorDetails}}
+            <section class="error-stack container">
+                <h3>Theme errors</h3>
+                {{#foreach errorDetails}}
+                    <div class="alert alert-warning" role="alert">
+                        <em>{{{rule}}}</em>
+
+                        {{#foreach failures}}
+                            <p>Ref: {{ref}}</p>
+                            <p>Message: {{message}}</p>
+                        {{/foreach}}
+                    </div>
+                {{/foreach}}
+            </section>
+            {{/if}}
+
+        </div>
+    </main>
+    {{!-- vendor scripts via gulp --}}
+    <script type="text/javascript" src="{{asset "js/build.js"}}"></script>
+    {{!-- site custom scripts --}}
+    <script type="text/javascript" src="{{asset "js/main.js"}}"></script>
+</body>
+</html>

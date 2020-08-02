@@ -1,0 +1,116 @@
+{{!< default}}
+<link rel="stylesheet" href="{{asset "css/profile.css"}}" />
+{{!-- ------------------------------------------------------------------------------------------ --}}
+{{> "nav"}}
+
+{{#author}}
+<main class="profile-page">
+    <section class="section-profile-cover section-shaped my-0">
+        <div class="position-relative">
+            <section class="section-shaped my-0">
+                <div id="particles" class="particle"></div>
+                <div id="daylight" class="shape shape-style-2 shape-default shape-skew"></div>
+                <div class="container shape-container d-flex">
+                    <div class="col px-0">
+                        <div class="row"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <section class="section section-lg pt-lg-0 mt--300">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="row row-grid">
+                        <div class="col-lg-3 pr-0">
+                            <div class="card shadow border-0">
+                                <div class="card-body py-10">
+                                    <img src="{{profile_image}}" class="rounded-circle img-fluid img-center pfp" alt="{{name}}">
+                                    
+                                    {{#if bio}}
+                                    <p class="description mt-3 bio text-center">{{bio}}</p>
+                                    {{/if}}
+
+                                    <div class="horizontal-divider"></div>
+                                    <pre class="font-weight-500 mt-5 mb-2 statistic-section text-success"><i class="fa fa-user-circle fa-fw text-success"></i> Overview</pre>
+                                    <div>
+                                        <div class="statistic">
+                                            <div class="head">
+                                                <h6 class="text-dark statistic-field">Published</h6>
+                                            </div>
+                                            <div class="divider"></div>
+                                            <div class="value">
+                                                <h6 class="text-dark statistic-field">{{plural ../pagination.total empty='Nothing' singular='% post' plural='% posts'}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{#if location}}
+                                    <div>
+                                        <div class="statistic">
+                                            <div class="head">
+                                                <h6 class="text-dark statistic-field">Location</h6>
+                                            </div>
+                                            <div class="divider"></div>
+                                            <div class="value">
+                                                <h6 class="text-dark statistic-field">{{location}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="bg-success-darker shadow-lg no-rad card">
+                                <nav class="navbar-horizontal navbar-dark bg-success-darker navbar navbar-expand-lg">
+                                    <div class="container">
+                                        <a class="navbar-brand">
+                                            <h3 class="text-white text-no-transform">
+                                                <i class="rank-icon fa fa-crown"></i><strong class="user-title">{{name}}</strong>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </div>
+                            {{/author}}
+                            <div class="shadow border-0 card">
+                                <div class="pt-0 card-body">
+                                    <div class="nav-wrapper wrap">
+                                        <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tab-controls" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link pills-success mb-sm-3 mb-md-0 active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">
+                                                    <i class="fa fa-paper-plane fa-fw mr-1"></i> Posts
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link pills-success mb-sm-3 mb-md-0" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">
+                                                    <i class="fa fa-id-badge fa-fw mr-1"></i> Information
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card shadow">
+                                        <div class="card-body">
+                                            <div class="tab-content" id="tabs">
+                                                <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                                                    {{#foreach posts}}
+                                                        {{> "post-card-slim"}}
+                                                    {{/foreach}}
+                                                    {{pagination}}
+                                                </div>
+                                                <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                                                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi ipsa perferendis omnis dolores dolor voluptate blanditiis, quisquam deleniti possimus nobis, consectetur perspiciatis sint aliquam accusantium tempora illo, dicta molestias! Facere.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

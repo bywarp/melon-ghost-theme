@@ -1,0 +1,26 @@
+<div class="bg-white border-0 card">
+    <div class="row">
+        <div class="col-md-1">
+            <div class="author-name-tooltip">
+                {{primary_author.name}}
+            </div>
+            {{#if primary_author.profile_image}}
+            <a href="{{url}}" class="static-avatar">
+                <img class="profile-post-avatar rounded-circle" src="{{img_url primary_author.profile_image size="m"}}" alt="{{name}}" />
+            </a>
+            {{else}}
+            <a href="{{url}}" class="static-avatar profile-post-avatar rounded-circle bg-dark">{{> "icons/avatar"}}</a>
+            {{/if}}
+        </div>
+        <div class="col-md-11 post-seperator">
+            <div class="card-body">
+                <div class="card-subtitle"><span class="font-weight-500">{{primary_author.name}}</span> <small class="profile-post-time">{{date format="MMMM Do YYYY, h:mm a"}}</small></div>
+                <p class="card-text profile-post-content">
+                    {{excerpt words="30"}}
+                    <br/>
+                </p>
+                <a href="{{url}}" class="text-success read-more shine"><i class="fa fa-chevron-right fa-fw thick-600"></i> Read more</a>
+            </div>
+        </div>
+    </div>
+</div>

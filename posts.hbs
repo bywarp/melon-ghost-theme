@@ -1,0 +1,58 @@
+{{!< default}}
+<link rel="stylesheet" href="{{asset "css/posts.css"}}">
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+{{> "nav"}}
+<main>
+    <div class="position-relative">
+        <section class="section section-lg section-shaped subpage-header-margin">
+            <div id="particles" class="particle"></div>
+            <div class="shape shape-style-1 shape-default"></div>
+            <div class="py-lg-md d-flex container">
+                <div class="col px-0">
+                    <div class="row">
+                        <div class="lg-order-1 col-lg-8">
+                            <h1 class="display-3 text-white landing-header">
+                                News Registry
+                                <span class="landing-tagline">
+                                    {{#get "posts" limit="all" as |allposts| }}
+                                        Listing {{allposts.length}} of {{allposts.length}} posts
+                                    {{/get}}
+                                </span>
+                            </h1>
+                        </div>
+                        <div class="lg-order-2 col-lg-4"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="section section-lg" id="site-main">
+        <div class="container">
+            <div class="row-grid align-items-center row">
+                <div class="order-md-1 col-md-12">
+                    <div class="pr-md-5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="icon icon-shape icon-shape-success shadow rounded-circle mb-5">
+                                    <i class="fa fa-book fa-fw"></i>
+                                </div>
+                            </div>
+                            <div class="section-icon-position col-md-10">
+                                <h4 class="text-success section-header">All News</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-deck card-deck-flex card-deck-top">
+                {{#get "posts" limit="all" include="tags,authors" as |allposts| }}
+                    {{#foreach allposts}}
+                        {{> "post-card"}}
+                    {{/foreach}}
+                {{/get}}
+            </div>
+        </div>
+        </div>
+    </section>
+</main>
