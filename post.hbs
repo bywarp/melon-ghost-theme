@@ -1,91 +1,84 @@
 {{!< default}}
 
+<link rel="stylesheet" href="{{asset "css/thread.css"}}">
+
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<header class="site-header">
-    {{> "site-nav"}}
-</header>
+{{> "nav"}}
 
 {{!-- Everything inside the #post tags pulls data from the post --}}
 {{#post}}
 
-<main id="site-main">
+<main id="site-main bg-primary">
     {{!-- <progress class="reading-progress-bar"></progress> --}}
-    <article class="{{post_class}} {{#unless feature_image}}no-image{{/unless}}">
-
-        <div class="container text-center py-4">
-            <div class="row">
-                <div class="col-sm">
-                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
-                    {{#primary_tag}}
-                        <span>/</span> <a href="{{url}}">{{name}}</a>
-                    {{/primary_tag}}
-                    <h1>{{title}}</h1>
+    <div class="position-relative">
+        <section class="section section-lg section-shaped landing-margin">
+            <div id="particles" class="particle"></div>
+            <div class="shape shape-style-1 shape-default"></div>
+            <div class="container">
+                <div class="text-center justify-content-center row">
+                    <div class="col-lg-10">
+                        <h2 class="display-3 text-white title">{{title}}</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        {{#if feature_image}}
-        <figure class="post-full-image">
-            {{!-- This is a responsive image, it loads different sizes depending on device
-            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-            <img
-                srcset="{{img_url feature_image size="s"}} 300w,
-                        {{img_url feature_image size="m"}} 600w,
-                        {{img_url feature_image size="l"}} 1000w,
-                        {{img_url feature_image size="xl"}} 2000w"
-                sizes="(max-width: 800px) 400px,
-                        (max-width: 1170px) 700px,
-                        1400px"
-                src="{{img_url feature_image size="xl"}}"
-                alt="{{title}}"
-            />
-        </figure>
-        {{/if}}
-
-        <section class="container my-5">
-            <div class="post-full-content">
-                {{content}}
-            </div>
         </section>
-
-        {{!-- Email subscribe form at the bottom of the page --}}
-        {{#if @labs.subscribers}}
-        <section class="jumbotron jumbotron-fluid my-5">
+        <section class="section section-lg pt-9 section-content">
             <div class="container">
-                <h1 class="display-4">Subscribe to {{@site.title}}</h1>
-                <p class="lead">Get the latest posts delivered right to your inbox</p>
-                {{subscribe_form input_class="form-control" button_class="btn btn-primary btn-lg my-2" placeholder="youremail@example.com"}}
+                <div class="justify-content-center mt--300 row">
+                    <div class="col-lg-12">
+                        <div class="bg-success-darker shadow-lg no-rad card">
+                            <nav class="navbar-horizontal navbar-dark bg-success-darker navbar navbar-expand-lg">
+                                <div class="container">
+                                    <h3 class="text-white text-no-transform">
+                                        <div class="avatar-group">
+                                            {{#foreach authors}}
+                                                <a href="{{url}}" class="avatar avatar-m rounded-circle" data-toggle="tooltip" data-original-title="{{name}}">
+                                                    {{#if profile_image}}
+                                                        <img alt="{{name}}" src="{{img_url profile_image size="m"}}">
+                                                    {{else}}
+                                                        {{> "icons/avatar"}}
+                                                    {{/if}}
+                                                </a>
+                                            {{/foreach}}
+                                            <div class="byline-content">
+                                                <span>{{#has author="count:>2"}}Multiple authors{{else}}{{authors}}{{/has}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="byline-date">
+                                            <span>Published on <time class="thick-600">{{date format="MMMM Do YYYY"}}</time> at <time class="thick-600">{{date format="h:mm:ss a"}}</time></span>
+                                        </div>
+                                    </h3>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="bg-gradient-secondary shadow card">
+                            <div class="p-lg-5 card-body">
+                                {{#if feature_image}}
+                                <figure class="post-full-image">
+                                    <img
+                                        srcset="{{img_url feature_image size="s"}} 300w,
+                                                {{img_url feature_image size="m"}} 600w,
+                                                {{img_url feature_image size="l"}} 1000w,
+                                                {{img_url feature_image size="xl"}} 2000w"
+                                        sizes="(max-width: 800px) 400px,
+                                                (max-width: 1170px) 700px,
+                                                1400px"
+                                        src="{{img_url feature_image size="xl"}}"
+                                        alt="{{title}}"
+                                    />
+                                </figure>
+                                <hr>
+                                {{/if}}
+                                {{content}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        {{/if}}
-
-        <footer class="post-full-footer">
-            <div class="container">
-
-                {{!-- There are two options for how we display the byline/author-info.
-                If the post has more than one author, we load a specific template
-                from includes/byline-multiple.hbs, otherwise, we just use the
-                default byline. --}}
-
-                {{#has author="count:>1"}}
-                    {{> "byline-multiple"}}
-                {{else}}
-                    {{> "byline-single"}}
-                {{/has}}
-
-            </div>
-
-        </footer>
-
-        {{!--
-        <section class="post-full-comments">
-            If you want to embed comments, this is a good place to do it!
-        </section>
-        --}}
-
-    </article>
+    </div>
 </main>
 
 {{!-- Links to Previous/Next posts --}}
@@ -140,56 +133,6 @@ into the {body} of the default.hbs template --}}
 
 
 {{!-- Floating header which appears on-scroll, included from includes/floating-header.hbs --}}
-{{> floating-header}}
+{{!-- {{> floating-header}} --}}
 
 {{/post}}
-
-{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
-{{#contentFor "scripts"}}
-<script>
-
-// NOTE: Scroll performance is poor in Safari
-// - this appears to be due to the events firing much more slowly in Safari.
-//   Dropping the scroll event and using only a raf loop results in smoother
-//   scrolling but continuous processing even when not scrolling
-$(document).ready(function () {
-    // Start fitVids
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-    // End fitVids
-
-    const readingProgress = (contentArea, progressBar) => {
-        const content = document.querySelector(contentArea);
-        const progress = document.querySelector(progressBar);
-
-        const frameListening = () => {
-            const contentBox = content.getBoundingClientRect();
-            const midPoint = window.innerHeight / 2;
-            const minsRemaining = Math.round(progress.max - progress.value);
-
-            if (contentBox.top > midPoint) {
-                progress.value = 0;
-            }
-
-            if (contentBox.top < midPoint) {
-                progress.value = progress.max;
-            }
-
-            if (contentBox.top <= midPoint && contentBox.bottom >= midPoint) {
-                progress.value =
-                    (progress.max * Math.abs(contentBox.top - midPoint)) /
-                    contentBox.height;
-            }
-
-            window.requestAnimationFrame(frameListening);
-        };
-
-        window.requestAnimationFrame(frameListening);
-    };
-
-    readingProgress(".post-full-content", ".reading-progress-bar");
-
-});
-
-</script>
-{{/contentFor}}

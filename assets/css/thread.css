@@ -1,0 +1,240 @@
+.title {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-size: 3.0rem;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.15em;
+}
+
+.section-content {
+    padding-top: 13rem !important;
+}
+
+.avatar-group .avatar {
+    vertical-align: bottom;
+}
+
+.author-list {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    margin: 0 0 0 9px !important;
+    padding: 0;
+    list-style: none;
+    padding-top: 8px;
+}
+
+.author-list-item {
+    position: relative;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.author-list-item:nth-child(1) {
+    z-index: 10;
+}
+
+.author-list-item:nth-child(2) {
+    z-index: 9;
+}
+
+.author-list-item:nth-child(3) {
+    z-index: 8;
+}
+
+.author-list-item:nth-child(4) {
+    z-index: 7;
+}
+
+.author-list-item:nth-child(5) {
+    z-index: 6;
+}
+
+.author-list-item:nth-child(6) {
+    z-index: 5;
+}
+
+.author-list-item:nth-child(7) {
+    z-index: 4;
+}
+
+.author-list-item:nth-child(8) {
+    z-index: 3;
+}
+
+.author-list-item:nth-child(9) {
+    z-index: 2;
+}
+
+.author-list-item:nth-child(10) {
+    z-index: 1;
+}
+
+.static-avatar {
+    display: block;
+    overflow: hidden;
+    margin: 0 -5px;
+    width: 34px;
+    height: 34px;
+    border: #fff 2px solid;
+    border-radius: 100%;
+}
+
+.static-avatar-wrapper {
+    padding: 4px;
+    text-align: center;
+}
+
+.author-profile-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: color(var(--lightgrey) l(+10%));
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.author-profile-image,
+.avatar-wrapper {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: color(var(--lightgrey) l(+10%));
+    border-radius: 100%;
+
+    object-fit: cover;
+}
+
+.post-card-meta .profile-image-wrapper,
+.post-card-meta .avatar-wrapper {
+    position: relative;
+}
+
+.author-list-item {
+    position: relative;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.static-avatar {
+    display: block;
+    overflow: hidden;
+    margin: 0 0 0 -6px;
+    width: 34px;
+    height: 34px;
+    border: #fff 2px solid;
+    border-radius: 100%;
+}
+
+.author-name-tooltip {
+    position: absolute;
+    bottom: 105%;
+    z-index: 999;
+    display: block;
+    padding: 2px 7px;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+    background: var(--dark);
+    border-radius: 3px;
+    box-shadow: rgba(39,44,49,0.08) 0 12px 26px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transform: translateY(6px);
+    pointer-events: none;
+}
+
+.author-list-item:hover .author-name-tooltip {
+    opacity: 1.0;
+    transform: translateY(0px);
+}
+
+@media (max-width: 700px) {
+    .author-name-tooltip {
+        display: none;
+    }
+}
+
+.byline-content {
+    flex: unset;
+    display: unset;
+    flex-direction: unset;
+    margin: 3px 0 0 5px;
+    color: color(var(--midgrey) l(+10%));
+    font-size: 1.4rem;
+    line-height: 1.4em;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 600;
+    letter-spacing: -0.55px;
+    text-transform: unset;
+    vertical-align: text-top;
+}
+
+.byline-content span {
+    margin: 0;
+}
+
+.byline-content a {
+    color: color(var(--darkgrey) l(+20%));
+    font-weight: unset;
+}
+
+.byline-date {
+    flex: unset;
+    display: unset;
+    flex-direction: unset;
+    margin: 2px 0 0 6px;
+    color: color(var(--midgrey) l(+10%));
+    font-size: 0.85rem;
+    line-height: 1.4em;
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 400;
+    letter-spacing: unset;
+    text-transform: unset;
+}
+
+.byline-date .bull {
+    display: inline-block;
+    margin: 0 4px;
+    opacity: 0.6;
+}
+
+.single-author-byline {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+    color: color(var(--midgrey) l(-10%));
+    font-size: 1.3rem;
+    line-height: 1.4em;
+    font-weight: 500;
+}
+
+.single-author {
+    display: flex;
+    align-items: center;
+}
+
+.single-author .static-avatar {
+    margin-left: -2px;
+}
+
+.single-author-name {
+    display: inline-block;
+}
+
+/* 5. Single Author Byline
+/* ---------------------------------------------------------- */
+
+.author-card .author-profile-image {
+    margin-right: 15px;
+    width: 60px;
+    height: 60px;
+}
+
+.author-card .avatar-wrapper {
+    padding: 14px 16px;
+}

@@ -16,7 +16,7 @@ into the {body} of the default.hbs template --}}
                                 <span class="landing-tagline shine">ahahaha funny gameing time</span>
                             </h1>
                             <p class="join-today text-white pt-4">
-                                <button class="btn btn-dark text-lowercase thick-300 shine">Join <b>0 players</b> on <b>play.melon.gg</b></button>
+                                <button class="btn btn-dark text-lowercase thick-300 shine">Join <b id="onlineComponent"><span id="onlineCount">0</span> <span id="playerComponent">players</span></b> on <b>play.melon.gg</b></button>
                             </p>
                         </div>
                         <div class="lg-order-2 col-lg-4"></div>
@@ -29,7 +29,7 @@ into the {body} of the default.hbs template --}}
         <div class="container">
             <div class="row-grid align-items-center row">
                 <div class="order-md-1 col-md-12">
-                    <div class="pr-md-5">
+                    <div class="pr-md-5 recent-news">
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="icon icon-shape icon-shape-success shadow rounded-circle mb-5">
@@ -37,13 +37,11 @@ into the {body} of the default.hbs template --}}
                                 </div>
                             </div>
                             <div class="section-icon-position col-md-10">
-                                <h4 class="text-success section-header">Recent News</h4>
+                                <h4 class="text-success section-header">News</h4>
                             </div>
                         </div>
                         <p class="latest-post-info">
-                            {{#foreach posts limit="1"}}
-                                The latest post, <a href="{{url}}" class="text-gray-dark thick-400 shine">{{title}}</a>, was authored by <b>{{#has author="count:>2"}}multiple authors{{else}}{{authors}}{{/has}}</b> on {{date published_at format="MMMM Do YYYY, h:mm a"}}.
-                            {{/foreach}}
+                            Stay up to date about the server through our frequent news posts.
                         </p>
                     </div>
                 </div>
@@ -54,33 +52,39 @@ into the {body} of the default.hbs template --}}
                     {{> "post-card"}}
                 {{/foreach}}
             </div>
+            <p class="all-posts-section">
+                Looking for something a bit older than the above posts? We've got you covered.
+                <br>
+                <br>
+                <a class="btn btn-dark shine" href="/posts"><i class="fa fa-angle-right fa-fw"></i> view all published posts</a>
+            </p>
         </div>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <div class="row-grid align-items-center row">
-                <div class="order-md-1 col-md-12">
-                    <div class="pr-md-5">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="icon icon-shape icon-shape-success shadow rounded-circle mb-5">
-                                    <i class="fa fa-ellipsis-h fa-fw"></i>
-                                </div>
-                            </div>
-                            <div class="section-icon-position col-md-10">
-                                <h4 class="text-success section-header">View All News</h4>
-                            </div>
-                        </div>
-                        <p class="latest-post-info">
-                            Looking for something a bit older than the above posts? We've got you covered.
-                            <br>
-                            <br>
-                            <a class="btn btn-dark shine" href="/posts"><i class="fa fa-angle-right fa-fw"></i> view all previous posts</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 </main>
+{{#contentFor "scripts"}}
+<script>
+    let serverAddress = $('meta[name=serverAddress]').attr('content') || 'play.melon.gg';
+    $.ajax(`https://api.mcsrvstat.us/2/${serverAddress}`)
+        .then((data, status, xhr) => {
+            let { online } = data.players;
+            let counter = new countUp.CountUp('onlineCount', online);
+
+            if (!counter.error) {
+                counter.start();
+                $("#playerComponent").text('player' +
+                    (online == 1 
+                        ? '' 
+                        : 's'
+                    )
+                )
+                return;
+            }
+
+            $('#onlineComponent').html(`<span id="onlineCount">${online}</span> <span id="playerComponent">player${online == 1 ? '' : 's'}</span>`);
+        },
+        (xhr, status, err) => {
+            Logging.warn('Data', `An error occurred while fetching network statistics.`);
+        });
+</script>
+{{/contentFor}}
