@@ -32,7 +32,7 @@ into the {body} of the default.hbs template --}}
                             <nav class="navbar-horizontal navbar-dark bg-success-darker navbar navbar-expand-lg">
                                 <div class="container">
                                     <h3 class="text-white text-no-transform">
-                                        <div class="avatar-group">
+                                        <div class="avatar-group author-group">
                                             {{#foreach authors}}
                                                 <a href="{{url}}" class="avatar avatar-m rounded-circle" data-toggle="tooltip" data-original-title="{{name}}">
                                                     {{#if profile_image}}
@@ -43,7 +43,7 @@ into the {body} of the default.hbs template --}}
                                                 </a>
                                             {{/foreach}}
                                             <div class="byline-content">
-                                                <span>{{#has author="count:>2"}}Multiple authors{{else}}{{authors}}{{/has}}</span>
+                                                <span class="author-string thick-400">Authored by {{#has author="count:>2"}}Multiple authors{{else}}{{authors}}{{/has}}</span>
                                             </div>
                                         </div>
                                         <div class="byline-date">

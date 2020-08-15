@@ -29,11 +29,11 @@
                                     <img src="{{profile_image}}" class="rounded-circle img-fluid img-center pfp" alt="{{name}}">
                                     
                                     {{#if bio}}
-                                    <p class="description mt-3 bio text-center">{{bio}}</p>
+                                    <p class="description mt-3 mb-5 bio text-center">{{bio}}</p>
                                     {{/if}}
 
                                     <div class="horizontal-divider"></div>
-                                    <pre class="font-weight-500 mt-5 mb-2 statistic-section text-success"><i class="fa fa-user-circle fa-fw text-success"></i> Overview</pre>
+                                    <pre class="font-weight-500 mt-3 mb-3 statistic-section text-success"><i class="fa fa-user-circle fa-fw text-success"></i> Overview</pre>
                                     <div>
                                         <div class="statistic">
                                             <div class="head">
@@ -58,6 +58,41 @@
                                         </div>
                                     </div>
                                     {{/if}}
+
+                                    {{#has any="website, twitter"}}
+                                        <div class="horizontal-divider"></div>
+                                        <pre class="font-weight-500 mt-3 mb-3 statistic-section text-success"><i class="fa fa-hashtag fa-fw text-success"></i> Social Media</pre>
+                                        {{#if website}}
+                                            <div>
+                                                <div class="statistic">
+                                                    <div class="head">
+                                                        <h6 class="text-dark statistic-field">Website</h6>
+                                                    </div>
+                                                    <div class="divider"></div>
+                                                    <div class="value">
+                                                        <h6 class="text-dark statistic-field">
+                                                            <a href="{{website}}" class="text-success shine" target="_blank" rel="noopener">{{website}}</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{/if}}
+                                        {{#if twitter}}
+                                            <div>
+                                                <div class="statistic">
+                                                    <div class="head">
+                                                        <h6 class="text-dark statistic-field">Twitter</h6>
+                                                    </div>
+                                                    <div class="divider"></div>
+                                                    <div class="value">
+                                                        <h6 class="text-dark statistic-field">
+                                                            <a href="{{twitter_url}}" class="text-success shine" target="_blank" rel="noopener">{{twitter}}</a>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{/if}}
+                                    {{/has}}
                                 </div>
                             </div>
                         </div>
@@ -90,14 +125,21 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="card shadow">
+                                    <div class="card card-invis">
                                         <div class="card-body">
                                             <div class="tab-content" id="tabs">
                                                 <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                                     {{#foreach posts}}
                                                         {{> "post-card-slim"}}
                                                     {{/foreach}}
-                                                    {{pagination}}
+                                                    <hr>
+                                                    <div class="row paginator-section">
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4 d-flex justify-content-center">
+                                                            {{pagination}}
+                                                        </div>
+                                                        <div class="col-md-4"></div>
+                                                    </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
                                                     <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi ipsa perferendis omnis dolores dolor voluptate blanditiis, quisquam deleniti possimus nobis, consectetur perspiciatis sint aliquam accusantium tempora illo, dicta molestias! Facere.</p>

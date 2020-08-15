@@ -148,7 +148,7 @@ blockquote {
     text-transform: uppercase;
 }
 
-pre {
+/* pre {
     overflow-x: auto;
     margin: 1.5em 0 3em;
     padding: 20px;
@@ -157,7 +157,7 @@ pre {
     color: #e5eff5;
     background: #0e0f11;
     border-radius: 5px;
-}
+} */
 
 .author-list {
     display: flex;
@@ -979,6 +979,10 @@ hr.footer-divider {
 .subpage-header-margin {
     padding-top: 9rem !important;
     padding-bottom: 9rem !important;;
+}
+
+.author-group {
+    margin-top: 10px;
 }
 
 .first-nav-item {

@@ -14,7 +14,11 @@
         </div>
         <div class="col-md-11 post-seperator">
             <div class="card-body">
-                <div class="card-subtitle"><span class="font-weight-500">{{primary_author.name}}</span> <small class="profile-post-time">{{date format="MMMM Do YYYY, h:mm a"}}</small></div>
+                <div class="card-subtitle">
+                    <a class="font-weight-600 author-name shine" href="{{primary_author.url}}">
+                        {{primary_author.name}}
+                    </a> <small class="profile-post-time">{{date format="MMMM Do YYYY, h:mm a"}}</small>
+                </div>
                 <p class="card-text profile-post-content">
                     {{excerpt words="30"}}
                     <br/>

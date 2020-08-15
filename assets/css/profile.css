@@ -2,6 +2,22 @@
     color: #66A7C5 !important;
 }
 
+.profile-page .card-invis {
+    box-shadow: unset !important;
+    border: unset !important;
+    padding-bottom: unset !important;
+}
+
+.profile-page .paginator-section {
+    padding-top: unset;
+    margin-bottom: -4.05rem;
+}
+
+.profile-page .paginator-divider {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
 .profile-page .rank-icon {
     font-size: 17px;
     vertical-align: middle;
@@ -28,6 +44,12 @@
 .profile-page .statistic-field-sm {
     font-size: 11px;
     font-weight: 300;
+}
+
+.profile-page .author-name {
+    color: #283448 !important;
+    font-size: 0.95rem;
+    vertical-align: middle;
 }
 
 .profile-page img.pfp {
