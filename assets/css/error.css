@@ -1,0 +1,14 @@
+body.error .margin-fix {
+	margin-top: 12.5% !important;
+}
+
+body.error footer.margin-fix {
+	margin-top: 10% !important;
+}
+
+body.error .error-section-title {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 900;
+    font-size: 2.35rem;
+    letter-spacing: -0.035em;
+}

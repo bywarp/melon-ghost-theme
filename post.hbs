@@ -13,16 +13,9 @@ into the {body} of the default.hbs template --}}
 <main id="site-main bg-primary">
     {{!-- <progress class="reading-progress-bar"></progress> --}}
     <div class="position-relative">
-        <section class="section section-lg section-shaped landing-margin">
+        <section class="section section-lg section-shaped post-landing-margin">
             <div id="particles" class="particle"></div>
             <div class="shape shape-style-1 shape-default"></div>
-            <div class="container">
-                <div class="text-center justify-content-center row">
-                    <div class="col-lg-10">
-                        <h2 class="display-3 text-white title">{{title}}</h2>
-                    </div>
-                </div>
-            </div>
         </section>
         <section class="section section-lg pt-9 section-content">
             <div class="container">
@@ -55,6 +48,16 @@ into the {body} of the default.hbs template --}}
                         </div>
                         <div class="bg-gradient-secondary shadow card">
                             <div class="p-lg-5 card-body">
+                                {{#if custom_excerpt}}
+                                <div>
+                                    <b class="post-excerpt-title">{{title}}</b>
+                                    <div class="post-excerpt-box">
+                                        <span class="post-excerpt">{{custom_excerpt}}</span>
+                                        <hr>
+                                    </div>
+                                </div>
+                                {{/if}}
+
                                 {{#if feature_image}}
                                 <figure class="post-full-image">
                                     <img
@@ -71,6 +74,7 @@ into the {body} of the default.hbs template --}}
                                 </figure>
                                 <hr>
                                 {{/if}}
+
                                 {{content}}
                             </div>
                         </div>

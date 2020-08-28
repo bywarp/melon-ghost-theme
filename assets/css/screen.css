@@ -1010,6 +1010,41 @@ hr.footer-divider {
     line-height: 0.5em;
 }
 
+.post-excerpt-title {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-size: 1.45rem;
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 0.5em;
+}
+
+.post-excerpt-box {
+    padding-top: 0.95rem;
+}
+
+.post-excerpt {
+    font-size: 1.15rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.post-landing-margin {
+    padding-top: 8rem !important;
+    padding-bottom: 8rem !important; 
+}
+
+.navbar-collapse.collapse.show .fa {
+    width: 1.75em !important;
+}
+
+.navbar-collapse-title {
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 700;
+    font-size: 33px;
+    letter-spacing: -0.035em;
+    margin-top: -7px;
+}
+
 .text-mono {
     font-family: 'Roboto Mono', monospace !important;
 }

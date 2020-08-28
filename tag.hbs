@@ -1,40 +1,22 @@
 {{!< default}}
-{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
-
-{{#tag}}
-{{> header background=feature_image}} {{!--Special header.hbs partial to generate the <header> tag--}}
-    <div class="container pb-4">
-        {{> "site-nav"}}
-        <div class="row text-center pt-5">
-            <div class="col pt-5">
-                <h1 class="site-title">{{name}}</h1>
-            </div>                
-        </div>
-        <div class="row text-center pb-5">
-            <div class="col pb-5">
-                <h2 class="lead">
-                    {{#if description}}
-                        {{description}}
-                    {{else}}
-                        A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
-                    {{/if}}
-                </h2>
-            </div>                
-        </div>
+<link rel="stylesheet" href="{{asset "css/posts.css"}}">
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+{{> "nav"}}
+<main>
+    <div class="position-relative">
+        <section class="section section-md section-shaped">
+            <div id="particles" class="particle"></div>
+            <div class="shape shape-style-1 shape-default"></div>
+        </section>
     </div>
-</header>
-{{/tag}}
-
-{{!-- The main content area --}}
-<main id="site-main">
-    <div class="container">
-        <div class="post-feed">
-            {{#foreach posts}}
-
-                {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-                {{> "post-card"}}
-
-            {{/foreach}}
+    <section class="section section-lg" id="site-main">
+        <div class="container">
+            <div class="card-deck card-deck-flex card-deck-top">
+                {{#foreach posts }}
+                    {{> "post-card"}}
+                {{/foreach}}
+            </div>
         </div>
-    </div>
+    </section>
 </main>

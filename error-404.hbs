@@ -1,54 +1,43 @@
-{{!--
-This error template is used for all 404 errors, which might occur on your site.
-It's a good idea to keep this template as minimal as possible in terms of both file size and complexity.
---}}
-
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>{{meta_title}}</title>
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {{!-- Vendor Scripts by Gulp --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "css/build.css"}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
-</head>
-<body class="error-template">
-    <nav class="navbar navbar-dark bg-dark p-3">
-        {{#if @site.logo}}
-            <a class="navbar-brand" href="{{@site.url}}"><img src="{{img_url @site.logo size="xs"}}" alt="{{@site.title}}" /></a>
-        {{else}}
-            <a class="navbar-brand" href="{{@site.url}}">{{@site.title}}</a>
-        {{/if}}
-    </nav>
-    <main id="site-main" class="jumbotron jumbotron-fluid">
-        <div class="container text-center">
-            <section class="error-message">
-                <h1 class="display-4">{{statusCode}}</h1>
-                <p class="lead">{{message}}</p>
-                <a href="{{@site.url}}">Go to the front page →</a>
-            </section>
-        </div>
-    </main>
+   <head>
+      <title>{{meta_title}}</title>
+      <meta name="HandheldFriendly" content="True" />
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {{#get "posts" limit="3"}}
-    <section id="site-main">
-        <div class="container">
-            <div class="card-deck">
-                {{#foreach posts}}
-                    {{> "post-card"}}
-                {{/foreach}}
+      <link rel="stylesheet" type="text/css" href="{{asset "css/argon.css"}}" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+      <link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css">
+
+      <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+      <link rel="stylesheet" type="text/css" href="{{asset "css/error.css"}}" />
+   </head>
+   <body class="bg-success error">
+      <main>
+        <div class="position-relative">
+          <section class="section-shaped my-0 section section-lg margin-fix">
+            <div class="container">
+              <div class="row row-grid align-items-center">
+                <div class="col-md-4 order-md-2">
+                  <object data="{{asset "svg/error_404.svg"}}" class="img-fluid"></object>
+                </div>
+                <div class="col-md-8 order-md-1">
+                  <div class="pr-md-5">
+                    <h3 class="error-section-title text-white">Error 404</h3>
+                     <p class="text-secondary">
+                        We couldn't find the content you requested.
+                        <br/>
+                        If you believe this is a mistake, feel free to <a class="text-white thick-500" href="mailto:hello@melon.gg">contact us</a>.<br/><br/><a href="/" class="text-white letter-compress thick-500 shine"><b>Click to go home</b></a>
+                     </p>
+                  </div>
+                </div>
+              </div>
             </div>
+          </section>
         </div>
-    </div>
-    {{/get}}
-
-    {{!-- vendor scripts via gulp --}}
-    <script type="text/javascript" src="{{asset "js/build.js"}}"></script>
-    {{!-- site custom scripts --}}
-    <script type="text/javascript" src="{{asset "js/main.js"}}"></script>
-
-</body>
+      </main>
+    </body>
 </html>

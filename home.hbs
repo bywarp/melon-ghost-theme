@@ -13,10 +13,10 @@ into the {body} of the default.hbs template --}}
                         <div class="lg-order-1 col-lg-8">
                             <h1 class="display-3 text-white landing-header">
                                 Melon Games
-                                <span class="landing-tagline shine">ahahaha funny gameing time</span>
+                                <span class="landing-tagline shine" id="tagline">robots robots robots</span>
                             </h1>
                             <p class="join-today text-white pt-4">
-                                <button class="btn btn-dark text-lowercase thick-300 shine">Join <b id="onlineComponent"><span id="onlineCount">0</span> <span id="playerComponent">players</span></b> on <b>play.melon.gg</b></button>
+                                <button class="btn btn-dark text-lowercase thick-300 shine">Join <b id="onlineComponent"><span id="onlineCount">0</span> <span id="playerComponent">players</span></b> on <b id="serverComponent">robots.melon.gg</b></button>
                             </p>
                         </div>
                         <div class="lg-order-2 col-lg-4"></div>
@@ -46,7 +46,7 @@ into the {body} of the default.hbs template --}}
                     </div>
                 </div>
             </div>
-            <div class="card-deck">
+            <div class="card-deck card-deck-flex card-deck-top">
                 {{#foreach posts limit="3"}}
                     {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                     {{> "post-card"}}
@@ -65,6 +65,11 @@ into the {body} of the default.hbs template --}}
 {{#contentFor "scripts"}}
 <script>
     let serverAddress = $('meta[name=serverAddress]').attr('content') || 'play.melon.gg';
+    let tagline = $('meta[name=tagline]').attr('content') || 'Custom Minecraft Minigames';
+
+    $('#serverComponent').text(serverAddress);
+    $('#tagline').text(tagline);
+
     $.ajax(`https://api.mcsrvstat.us/2/${serverAddress}`)
         .then((data, status, xhr) => {
             let { online } = data.players;
