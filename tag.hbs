@@ -5,13 +5,35 @@ into the {body} of the default.hbs template --}}
 {{> "nav"}}
 <main>
     <div class="position-relative">
-        <section class="section section-md section-shaped">
+        <section class="section section-md section-shaped header-img">
             <div id="particles" class="particle"></div>
+            <div class="header-mask bg-melon-gradient opacity-modifier"></div>
             <div class="shape shape-style-1 shape-default"></div>
         </section>
     </div>
     <section class="section section-lg" id="site-main">
         <div class="container">
+            <div class="row-grid align-items-center row">
+                {{#tag}}
+                <div class="order-md-1 col-md-12">
+                    <div class="pr-md-5 recent-news">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="icon icon-shape icon-shape-success shadow rounded-circle mb-5">
+                                    <i class="fa fa-tags fa-fw"></i>
+                                </div>
+                            </div>
+                            <div class="section-icon-position col-md-10">
+                                <h4 class="text-success section-header">{{name}}</h4>
+                            </div>
+                        </div>
+                        <p class="latest-post-info">
+                            Currently viewing all posts tagged with <b>{{slug}}</b>.
+                        </p>
+                    </div>
+                </div>
+                {{/tag}}
+            </div>
             <div class="card-deck card-deck-flex card-deck-top">
                 {{#foreach posts }}
                     {{> "post-card"}}
